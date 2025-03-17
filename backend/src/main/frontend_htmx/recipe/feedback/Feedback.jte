@@ -4,23 +4,22 @@
     <!-- todo #10: Feedback beim Laden der Seite lesen
 
         - hx-trigger: load
-        - get: "@{'/recipes/' + ${recipeId} + '/feedback'}"
-        - was passiert, wenn wir für hx:trigger einen falschen Wert angeben 🤔
+          - was passiert, wenn wir für hx:trigger einen falschen Wert angeben 🤔
+        - get: "/recipes/${recipeId}/feedback?slowdown=0"
+        - indicator: #feedbackListIndicator
+
+        - Was passiert, wenn die ganze Seite (initialer Request) langsam ist?
+
         -->
     <div
             id="feedbackList"
-            hx-trigger="load"
-            hx-get="/recipes/${recipeId}/feedback?slowdown=0"
-            hx-indicator="#feedbackListIndicator"
     >
     </div>
 
     <div id="feedbackListIndicator"
-
          class="Spinner"
     >
         @template.recipe.feedback.FeedbackLoadingIndicator()
-
     </div>
 
     <!-- todo #12: Loading Indicator
