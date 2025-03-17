@@ -10,12 +10,7 @@
 
 <main>
     <div class="container mx-auto mt-8 flex max-w-96 pt-8">
-        <!-- todo 35:
-            - handleInputChange Implementierung zeigen (unten)
-            - hx-on:input handleInputChange aufrufen
-        -->
-
-        <!-- todo 30:
+        <!-- todo 01:
          - hx-get /search
          - hx-trigger="input[target.value.length > 2] changed delay:200ms"
                           ^-- 🤔 was bedeutet das?
@@ -31,15 +26,8 @@
                 aria-label="Enter at least three chars to start searching for recipes"
                 class="h-8 w-full max-w-full rounded border border-gray-400 bg-white p-6 text-gray-500 hover:shadow-lg"
                 value="${search}"
-                hx-swap="outerHTML"
-                hx-get="/search"
-                hx-trigger="input[target.value.length > 2] changed delay:200ms"
-                hx-target="#searchResult"
-                hx-indicator="#searchIndicator"
-                hx-on:input="handleInputChange(event)"
-
         />
-        <!-- todo 32:
+        <!-- todo 02:
          - hx-get auf /search/reset
             -> was macht das?
           - swap outerHTML
@@ -48,11 +36,6 @@
         -->
         <button
                 class="ms-2 cursor-pointer text-gray-500 underline hover:text-gray-900"
-                hx-get="/search/reset"
-                hx-swap="outerHTML"
-                hx-target="main"
-                hx-push-url="/"
-
         >
             Clear
         </button>
