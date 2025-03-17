@@ -56,7 +56,17 @@ export function fetchRecipe(recipeId: string) {
   );
 }
 
-export function fetchFeedback(recipeId: string, feedbackPage: number = 0) {
+export function fetchFeedback(
+  recipeId: string,
+  feedbackPage: number | string | undefined = 0,
+) {
+  const thePage =
+    typeof feedbackPage === "number"
+      ? feedbackPage
+      : typeof feedbackPage === "string"
+        ? parseInt(feedbackPage || "0")
+        : 0;
+
   return fetchFromApi(
     getEndpointConfig("get", "/api/recipes/{recipeId}/feedback"),
     {
@@ -65,7 +75,7 @@ export function fetchFeedback(recipeId: string, feedbackPage: number = 0) {
       },
       query: {
         slowdown: slowDown_GetFeedbacks,
-        page: feedbackPage,
+        page: thePage,
       },
     },
   );

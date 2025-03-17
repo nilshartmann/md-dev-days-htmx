@@ -21,18 +21,15 @@
                     - 🤔  warum verwenden hier nicht den Link "als Link"?
                     - 🤔  ...warum brauchen wir "SPA-Verhalten"?
 
+                    -
                     - hx-get, analog zu href
                     - hx-push-url, analog zu href
-                    - target muss 'main' sein
+                    - swap outerHTML
+                    - select und target muss 'main' sein
                         ^-- 🤔 ist das eigentlich ein Problem?
                     -->
                     <a
                             href="/recipes/${recipe.id()}"
-                            hx-get="/recipes/${recipe.id()}?slowdown=2000"
-                            hx-push-url="/recipes/${recipe.id()}"
-                            hx-target="main"
-                            hx-select="main"
-                            hx-swap="outerHTML"
                             class="cursor-pointer hover:text-orange_2 hover:underline"
                     >
                         ${recipe.title()}
