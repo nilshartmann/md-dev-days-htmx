@@ -28,7 +28,7 @@ export default function IngredientsSection({ ingredients }: IngredientsProps) {
             */}
         </div>
       </div>
-      <IngredientList ingredients={ingredients} servings={servings} />
+      <IngredientList ingredients={ingredients} />
     </>
   );
 }

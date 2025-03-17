@@ -10,7 +10,7 @@ const nextConfig = {
     return [
       {
         source: '/backend/:slug*',
-        destination: 'http://localhost:8080/:slug*',
+        destination: 'http://localhost:9080/:slug*',
       },
     ]
   },

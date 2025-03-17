@@ -27,18 +27,14 @@
         />
     </div>
     <div>
-        @template.components.Button(
-        disabled=false,
-        content = @`
-            <div class="flex space-x-2">
-                <button
-                        id="subscribeButton"
-                        type="submit"
-                >Subscribe
-                </button>
-                @template.components.LoadingIndicator(id = "newsletterLoading", secondary = true)
-            </div>
-        `)
+        <div class="flex space-x-2">
+            <button
+                    id="subscribeButton"
+                    type="submit"
+            >Subscribe
+            </button>
+            @template.components.LoadingIndicator(id = "newsletterLoading", secondary = true)
+        </div>
     </div>
     @if("success".equals(newsletterResult))
         <div id="newsletterSubscribed">Subscribed!</div>
