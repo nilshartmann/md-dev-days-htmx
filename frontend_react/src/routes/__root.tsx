@@ -5,7 +5,6 @@ import { GlobalLoadingIndicator } from "../components/GlobalLoadingIndicator.tsx
 import { Timer } from "../components/Timer.tsx";
 import z from "zod";
 import { NewsletterRegistration } from "../components/NewsletterRegistration.tsx";
-import { showGlobalServings } from "../react-demo-config.tsx";
 import GlobalServingsWidget from "./recipes/-components/GlobalServingsWidget.tsx";
 
 const RoutePageParams = z.object({
@@ -45,7 +44,7 @@ export default function GlobalPageLayout() {
                 <span className="text-green">React </span> Edition
               </div>
             </div>
-            {showGlobalServings && <GlobalServingsWidget />}
+            <GlobalServingsWidget />
             <Timer />
           </div>
         </div>

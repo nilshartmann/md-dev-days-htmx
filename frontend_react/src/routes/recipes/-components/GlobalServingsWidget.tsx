@@ -1,11 +1,16 @@
-import ServingsWidget from "../$recipeId/-components/ServingsWidget.tsx";
+import ServingsChooser from "../$recipeId/-components/ServingsChooser.tsx";
+import { showGlobalServings } from "../../../react-demo-config.tsx";
 
 export default function GlobalServingsWidget() {
+  if (!showGlobalServings) {
+    return null;
+  }
+
   return (
     <div
       className={"container mx-auto me-4 flex h-14 items-center justify-end"}
     >
-      <ServingsWidget style={"large"} />
+      <ServingsChooser style={"large"} />
     </div>
   );
 }

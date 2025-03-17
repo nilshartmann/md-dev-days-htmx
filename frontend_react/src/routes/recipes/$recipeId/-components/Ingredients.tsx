@@ -1,19 +1,20 @@
 import { DetailedRecipeDto } from "../../../../components/api-types.ts";
-import { useServingsStore } from "../../-components/useServingsStore.ts";
-import ServingsWidget from "./ServingsWidget.tsx";
+import ServingsChooser from "./ServingsChooser.tsx";
 
 type IngredientsProps = {
   recipe: DetailedRecipeDto;
 };
 
 export function Ingredients({ recipe }: IngredientsProps) {
-  const servingsStore = useServingsStore();
-
+  // todo:
+  //   - servingsStore verwenden
+  //   - Berechnung unten zeigen
+  const servings = 4;
   return (
     <>
       <div className={"mb-8 mt-8 flex items-center justify-between"}>
         <h2 className={"font-space text-3xl font-bold"}>Ingredients</h2>
-        <ServingsWidget />
+        <ServingsChooser />
       </div>
       {recipe.ingredients.map((i) => {
         return (
@@ -25,7 +26,7 @@ export function Ingredients({ recipe }: IngredientsProps) {
           >
             <i className="fa-regular fa-circle-check me-2 text-orange_2 "></i>
             <span className={"font-inter text-gray-500 "}>
-              {(i.amount / 4) * servingsStore.servings} {i.unit} {i.name}
+              {(i.amount / 4) * servings} {i.unit} {i.name}
             </span>
           </div>
         );

@@ -3,7 +3,7 @@
 //    Demo Configuration for REACT example app
 //
 // -----------------------------------------------------------------------------
-export const showGlobalServings = true;
+export const showGlobalServings = false;
 export const backendUrl = "http://localhost:9080";
 
 // //////////////////////////////////////////////////////
