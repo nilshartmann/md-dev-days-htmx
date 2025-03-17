@@ -15,6 +15,7 @@ export const slowDown_search = 1200;
 
 // //////////////////////////////////////////////////////
 export const enableTanstackQueryDevTools = false;
+export const backendUrl = "http://localhost:9080";
 
 /** number of recipes on /recipes */
 export const recipesPerPage = 6;

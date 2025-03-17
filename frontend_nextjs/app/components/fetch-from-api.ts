@@ -1,5 +1,6 @@
 import { EndpointByMethod, EndpointParameters } from "./api-types.ts";
 import { z, ZodNever } from "zod";
+import { backendUrl } from "@/app/nextjs-demo-config.tsx";
 
 function replacePlaceholders(
   text: string,
@@ -10,7 +11,7 @@ function replacePlaceholders(
   });
 }
 
-const recipifyBackend = process.env.RECIPIFY_BACKEND ?? "http://localhost:8080";
+const recipifyBackend = process.env.RECIPIFY_BACKEND ?? backendUrl;
 console.log("Recipify Backend", recipifyBackend);
 
 const runningOnServer = () => typeof window === "undefined";
