@@ -1,17 +1,14 @@
 // initial Demo Konfiguration::::::::::
 
-// Für 2. Demo auf true setzen:
-export const enableSuspenseForFeedback = false;
-
-export const slowDown_IncreaseLikes = 1200;
-export const slowDown_GetFeedbacks = 600;
+export const slowDown_IncreaseLikes = 0;
+export const slowDown_GetFeedbacks = 0;
 export const slowDown_GetRecipe = 0;
-export const showNextLogoInHeader = true;
-
-// Für Request-Demo auf 0 setzen:
 export const debounce_search = 200;
+export const slowDown_search = 0;
 
-export const slowDown_search = 1200;
+// Für 2. Demo auf true setzen:
+export const showNextLogoInHeader = true;
+export const enableSuspenseForFeedback = false;
 
 // //////////////////////////////////////////////////////
 export const enableTanstackQueryDevTools = false;
