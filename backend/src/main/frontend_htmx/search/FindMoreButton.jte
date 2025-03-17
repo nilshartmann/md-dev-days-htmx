@@ -28,6 +28,7 @@
         <a
                 href="/search?page=${nextPage}&search=${search}"
                 hx-get="/search?page=${nextPage}"
+                <%-- searchField ist in SearchPageContent --%>
                 hx-include="#searchField"
                 hx-target="#searchResult"
                 hx-select="#searchResult > *"

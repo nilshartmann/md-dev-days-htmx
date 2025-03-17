@@ -1,7 +1,5 @@
 import Label from "../recipes/-components/Label.tsx";
-import LoadingIndicator from "../../components/LoadingIndicator.tsx";
 import { useSearchQuery } from "../../components/use-queries.ts";
-import { Button } from "../../components/Button.tsx";
 import RecipeSummaryCard from "./RecipeSummaryCard.tsx";
 
 type SearchProps = {
@@ -9,17 +7,16 @@ type SearchProps = {
 };
 
 export default function RecipeSearch({ search }: SearchProps) {
-  const {
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    hasHits,
-    allRecipes,
-  } = useSearchQuery(search);
+  const { hasHits, allRecipes } = useSearchQuery(search);
 
   if (!hasHits) {
     return <Label>No recipes found.</Label>;
   }
+
+  // todo:
+  //   hasNextPage, isFetchingNextPage und fetchNetPage verwenden:
+  //   <Button> rendern ODER "No more recipes. Happy cooking!"
+  //   Button-Label <LoadingIndicator secondary /> oder FindMode
 
   return (
     <>
@@ -27,18 +24,6 @@ export default function RecipeSearch({ search }: SearchProps) {
       {allRecipes.map((recipe) => (
         <RecipeSummaryCard key={recipe.id} recipe={recipe} />
       ))}
-      {hasNextPage && (
-        <div className="flex justify-center">
-          <Button>
-            {isFetchingNextPage ? (
-              <LoadingIndicator secondary />
-            ) : (
-              <button onClick={() => fetchNextPage()}>Find more...</button>
-            )}
-          </Button>
-        </div>
-      )}
-      {hasNextPage || <Label>No more recipes. Happy cooking!</Label>}
     </>
   );
 }
