@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="[Next.js] http://localhost:8090" type="js.build_tools.npm">
+  <configuration default="false" name="[Next.js] http://localhost:9090" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/frontend_nextjs/package.json" />
     <command value="run" />
     <scripts>

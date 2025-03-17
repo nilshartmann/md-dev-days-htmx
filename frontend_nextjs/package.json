@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:clean": "rm -rf .next && next dev -p 8090",
-    "dev": "next dev -p 8090",
+    "dev:clean": "rm -rf .next && next dev -p 9090",
+    "dev": "next dev -p 9090",
     "build": "next build",
-    "start": "next start -p 8090",
+    "start": "next start -p 9090",
     "lint": "next lint",
     "check": "pnpm lint && pnpm prettier:check && tsc --noEmit --skipLibCheck",
     "check:ts": "tsc --noEmit --skipLibCheck",

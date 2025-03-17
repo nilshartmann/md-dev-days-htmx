@@ -4,6 +4,7 @@
 //
 // -----------------------------------------------------------------------------
 export const showGlobalServings = true;
+export const backendUrl = "http://localhost:9080";
 
 // //////////////////////////////////////////////////////
 export const enableTanstackQueryDevTools = false;

@@ -6,6 +6,6 @@ import { TanStackRouterVite } from "@tanstack/router-vite-plugin";
 export default defineConfig({
   plugins: [react(), TanStackRouterVite()],
   server: {
-    port: 8099,
+    port: 9099,
   },
 });

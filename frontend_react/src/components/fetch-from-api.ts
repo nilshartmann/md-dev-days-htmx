@@ -1,5 +1,6 @@
 import { EndpointByMethod, EndpointParameters } from "./api-types.ts";
 import { z, ZodNever } from "zod";
+import { backendUrl } from "../react-demo-config.tsx";
 
 function replacePlaceholders(
   text: string,
@@ -11,7 +12,7 @@ function replacePlaceholders(
 }
 
 function resolveUrl(path: string, params: EndpointParameters | undefined) {
-  const url = `http://localhost:8080${path}`;
+  const url = `${backendUrl}${path}`;
 
   if (!params) {
     return url;
