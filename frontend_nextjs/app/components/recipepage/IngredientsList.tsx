@@ -25,7 +25,7 @@ export default function IngredientList({
                    todo: i.amount bezieht sich auf 4 Portionen,
                      - umrechnen mit übergebenen servings
               */}
-              {i.amount} {i.unit} {i.name}
+              {(i.amount / 4) * servings} {i.unit} {i.name}
             </span>
           </div>
         );
