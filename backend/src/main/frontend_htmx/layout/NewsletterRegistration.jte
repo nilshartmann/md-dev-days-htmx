@@ -33,7 +33,6 @@
                     type="submit"
             >Subscribe
             </button>
-            @template.components.LoadingIndicator(id = "newsletterLoading", secondary = true)
         </div>
     </div>
     @if("success".equals(newsletterResult))

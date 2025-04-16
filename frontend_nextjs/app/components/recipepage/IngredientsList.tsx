@@ -5,7 +5,10 @@ type IngredientListProps = {
   servings?: number;
   recipeId?: string;
 };
-export default function IngredientList({ ingredients }: IngredientListProps) {
+export default function IngredientList({
+  ingredients,
+  servings = 4,
+}: IngredientListProps) {
   return (
     <>
       {ingredients.map((i) => {
@@ -18,7 +21,11 @@ export default function IngredientList({ ingredients }: IngredientListProps) {
           >
             <i className="fa-regular fa-circle-check me-2 text-orange_2"></i>
             <span className={"font-inter text-gray-500"}>
-              {(i.amount / 4) * 4} {i.unit} {i.name}
+              {/*
+                   todo: i.amount bezieht sich auf 4 Portionen,
+                     - umrechnen mit übergebenen servings
+              */}
+              {i.amount} {i.unit} {i.name}
             </span>
           </div>
         );

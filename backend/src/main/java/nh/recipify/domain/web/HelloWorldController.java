@@ -6,16 +6,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HelloWorldController {
 
-    /**
-     * "Regulärer" GET-Controller, der das hello-world.html-Template zurückliefert
-     */
+    //
+    // URL: http://localhost:9080/hello
+    //
     @GetMapping("/hello")
     public String hello() {
         return "hello-world";
     }
 
-    /* todo: Mapping-Methode fuer HTMX Request
+    // todo:
+    //  - hello-htmx-template.jte anlegen und div zurückliefern (hwr)
+    //  - GetMapping für /hello-htmx  (hwc)
+    //    - mit Header "HX-Request"
+    //    - Liefert template "hello-htmx-template" zurück
 
-        hwc
-     */
 }
+
