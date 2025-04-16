@@ -31,14 +31,17 @@
                          _initial_ angehakt ist?
 
                     --%>
+                   hx-trigger="change"
+                   hx-get="/hello-htmx"
+                   hx-target="#more-info"
             />
             I want to know more!
         </label>
 
         <div id="more-info">
-<%--
-            👉 I want the info here
---%>
+            <%--
+                        👉 I want the info here
+            --%>
         </div>
     </body>
 </html>
