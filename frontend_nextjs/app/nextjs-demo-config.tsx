@@ -4,7 +4,7 @@ export const slowDown_IncreaseLikes = 0;
 export const slowDown_GetFeedbacks = 0;
 export const slowDown_GetRecipe = 0;
 export const debounce_search = 200;
-export const slowDown_search = 0;
+export const slowDown_search = 2400;
 
 // Für 2. Demo auf true setzen:
 export const showNextLogoInHeader = true;

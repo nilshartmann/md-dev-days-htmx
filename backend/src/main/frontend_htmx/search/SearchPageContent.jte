@@ -26,6 +26,18 @@
                 aria-label="Enter at least three chars to start searching for recipes"
                 class="h-8 w-full max-w-full rounded border border-gray-400 bg-white p-6 text-gray-500 hover:shadow-lg"
                 value="${search}"
+                hx-get="/search?slowdown=2000"
+                hx-trigger="input[target.value.length > 2] changed delay:200ms"
+                hx-target="#searchResult"
+                hx-swap="outerHTML"
+                hx-indicator="#searchIndicator"
+                <%--
+                  - Der "Hinweis-Text" muss ein- und ausgeblendet werden
+                  - es reicht nicht, den einfach nur zu löschen (wie beim Newsletter)
+                  --%>
+                <%-- v-- Namespace 🤦‍♂️ --%>
+                hx-on:input="handleInputChange(event)"
+
         />
         <!-- todo 02:
          - hx-get auf /search/reset
@@ -36,6 +48,11 @@
         -->
         <button
                 class="ms-2 cursor-pointer text-gray-500 underline hover:text-gray-900"
+                hx-get="/search/reset"
+                hx-swap="outerHTML"
+                hx-target="main"
+                hx-push-url="/"
+
         >
             Clear
         </button>
