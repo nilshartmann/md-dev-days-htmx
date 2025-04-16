@@ -9,27 +9,13 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { debounce_search } from "@/app/nextjs-demo-config.tsx";
 
 export default function SearchPage() {
-  // updating the search params without re-fetching from server:
-  //  see https://github.com/vercel/next.js/discussions/18072#discussioncomment-10697745
-  const searchParams = useSearchParams();
-  const searchTermInParams = searchParams.get("search");
+  const [searchTermInParams, setSearchTermInParams] = useSearchTermFromParams();
   const [search, setSearch] = useState(searchTermInParams || "");
   const [searchTerm] = useDebounce(search, debounce_search);
 
-  const pathname = usePathname();
-
   const handleSearchChange = (newSearch: string) => {
     setSearch(newSearch);
-
-    const current = new URLSearchParams(searchParams);
-    current.set("search", newSearch);
-
-    const newUrl = `${pathname}?${current.toString()}`;
-    window.history.replaceState(
-      { ...window.history.state, as: newUrl, url: newUrl },
-      "",
-      newUrl,
-    );
+    setSearchTermInParams(newSearch);
   };
 
   return (
@@ -64,4 +50,27 @@ export default function SearchPage() {
       </main>
     </>
   );
+}
+
+function useSearchTermFromParams() {
+  const searchParams = useSearchParams();
+  const searchTermInParams = searchParams.get("search");
+  const pathname = usePathname();
+
+  function setParams(newSearch: string) {
+    // updating the search params without re-fetching from server:
+    //  see https://github.com/vercel/next.js/discussions/18072#discussioncomment-10697745
+
+    const current = new URLSearchParams(searchParams);
+    current.set("search", newSearch);
+
+    const newUrl = `${pathname}?${current.toString()}`;
+    window.history.replaceState(
+      { ...window.history.state, as: newUrl, url: newUrl },
+      "",
+      newUrl,
+    );
+  }
+
+  return [searchTermInParams, setParams] as const;
 }

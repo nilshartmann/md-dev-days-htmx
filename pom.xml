@@ -4,13 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>nh.recipify</groupId>
-    <artifactId>spa-fullstack-htmx-example-prepare</artifactId>
+    <artifactId>jug-muenster-htmx-prepare</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>backend</module>
         <module>frontend_nextjs</module>
-        <module>frontend_react</module>
     </modules>
 
 </project>

@@ -1,34 +1,32 @@
 "use client";
-
-import { Input } from "../Input.tsx";
-import { Button } from "../Button.tsx";
 import React, { useState, useTransition } from "react";
-import { subscribeToNewsletter } from "@/app/components/recipify-actions.ts";
-import LoadingIndicator from "@/app/components/LoadingIndicator.tsx";
-import logo from "@/app/components/material/logo.png";
+import { Button } from "@/app/components/Button.tsx";
+import { Input } from "@/app/components/Input.tsx";
+import LogoLoadingIndicator from "@/app/components/layout/LogoLoadingIndicator.tsx";
+import { subscribeToNewsletter } from "@/app/components/layout/newsletter-actions.ts";
 
-//⚠️ Diese Komponente funktioniert nur, wenn
-//   JavaScript eingeschaltet ist
 export function NewsletterRegistration() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"Subscribed!" | null>(null);
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
 
-  const [isRequestRunning, startTransition] = useTransition();
+  const [isTransition, startTransition] = useTransition();
+
+  const buttonDisabled = isTransition || email.trim().length < 3;
 
   const handleEmailChange = (e: string) => {
-    setStatus(null);
     setEmail(e);
+    setStatus(null);
   };
 
   const handleSubmit = () => {
     startTransition(async () => {
+      // 'subscribeToNewsletter' ist eine SERVER-Funktion,
+      //  das ist eine Art RPC
       await subscribeToNewsletter(email);
       setEmail("");
-      setStatus("Subscribed!");
+      setStatus("success");
     });
   };
-
-  const saveDisabled = email.length < 1 || isRequestRunning;
 
   return (
     <div
@@ -38,23 +36,23 @@ export function NewsletterRegistration() {
       <div className={"max-w-64"}>
         <Input
           value={email}
+          disabled={isTransition}
           onChange={(e) => handleEmailChange(e.target.value)}
-          disabled={isRequestRunning}
           placeholder={"E-Mail"}
         />
       </div>
       <div>
-        <Button disabled={saveDisabled}>
-          {isRequestRunning ? (
-            <LoadingIndicator secondary placeholder={<img src={logo.src} />} />
+        <Button disabled={buttonDisabled}>
+          {isTransition ? (
+            <LogoLoadingIndicator />
           ) : (
-            <button disabled={saveDisabled} onClick={handleSubmit}>
+            <button disabled={buttonDisabled} onClick={handleSubmit}>
               Subscribe
             </button>
           )}
         </Button>
       </div>
-      <div>{status === "Subscribed!" && "Subscribed!"}</div>
+      <div>{status === "success" && "Subscribed!"}</div>
     </div>
   );
 }
