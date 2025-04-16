@@ -245,7 +245,8 @@ public class RecipeWebController {
 
         sleepFor("Subscribe to newsletter", slowdown);
 
-        model.addAttribute("newsletterEmail", request.newsletterEmail);
+        // Feld leeren
+        model.addAttribute("newsletterEmail", "");
         model.addAttribute("newsletterResult", "success");
 
         return "layout/NewsletterRegistration";
