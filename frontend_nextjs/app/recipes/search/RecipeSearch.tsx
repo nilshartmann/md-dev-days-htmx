@@ -10,6 +10,11 @@ type SearchProps = {
 };
 
 export default function RecipeSearch({ search }: SearchProps) {
+  // Führt die Suche aus. Liefert zurück:
+  //   - die Treffer für die aktuelle "Seite"
+  //   - Information, ob es weitere "Seiten" gibt
+  //   - die neu gelesenen Ergebnisse werden im Client-seitigen Cache
+  //     der bisherigen Ergebnis-Liste hinzugefügt.
   const query = useSearchQuery(search);
 
   if (!query.hasHits) {
@@ -20,8 +25,10 @@ export default function RecipeSearch({ search }: SearchProps) {
     <>
       <Label>Recipes for {search}</Label>
 
+      {/*List rendern, React kümmert sich um das anfügen der neuen Einträge */}
       <SearchResultList recipes={query.allRecipes} />
 
+      {/* Wenn es eine weitere Seite gibt, dann FindMoreButtonRendern*/}
       {query.hasNextPage && (
         <FindMoreButton
           isFetching={query.isFetchingNextPage}
