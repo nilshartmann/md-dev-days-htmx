@@ -18,6 +18,14 @@ export default async function RecipePage({
   params,
   searchParams,
 }: RecipePageProps) {
+  // Dieser Code wird IMMER ausgeführt, wenn auf die /recipeId-Route zugegriffen wird:
+  //   - als initialer Request
+  //   - als "interne" Navigation
+  //   -> Next.js kümmert sich im Client darum, dass nur die Änderungen
+  //      im Browser gemacht werden, die gemacht werden müssen
+  //      Beispiel: Eier-Uhr, Newsletter-Formular
+  //
+
   const response = await fetchRecipe(params.recipeId);
 
   if (!response) {

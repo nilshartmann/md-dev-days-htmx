@@ -27,9 +27,16 @@
                     - swap outerHTML
                     - select und target muss 'main' sein
                         ^-- 🤔 ist das eigentlich ein Problem?
+                        ^-- In den Netzwerk-Request (Antwort) gucken
+                        ^-- ganze Seite wird gerendert
                     -->
                     <a
                             href="/recipes/${recipe.id()}"
+                            hx-get="/recipes/${recipe.id()}"
+                            hx-push-url="/recipes/${recipe.id()}"
+                            hx-swap="outerHTML"
+                            hx-target="main"
+                            hx-select="main"
                             class="cursor-pointer hover:text-orange_2 hover:underline"
                     >
                         ${recipe.title()}
