@@ -9,10 +9,14 @@
         - indicator: #feedbackListIndicator
 
         - Was passiert, wenn die ganze Seite (initialer Request) langsam ist?
+          - Ausprobieren: - /recipes/14?slowdown=1000
 
         -->
     <div
             id="feedbackList"
+            hx-trigger="load"
+            hx-get="/recipes/${recipeId}/feedback?slowdown=2400"
+            hx-indicator="#feedbackListIndicator"
     >
     </div>
 
