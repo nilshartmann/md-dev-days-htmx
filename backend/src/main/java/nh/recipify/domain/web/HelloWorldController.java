@@ -19,6 +19,11 @@ public class HelloWorldController {
     //  - GetMapping für /hello-htmx  (hwc)
     //    - mit Header "HX-Request"
     //    - Liefert template "hello-htmx-template" zurück
+    @GetMapping(value = "/hello-htmx", headers = "HX-Request")
+    String helloHtmx() {
+
+        return "hello-htmx-template";
+    }
 
 }
 

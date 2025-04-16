@@ -1,5 +1,10 @@
+"use client";
+
 import { Ingredient } from "@/app/components/api-types.ts";
 import IngredientList from "@/app/components/recipepage/IngredientsList.tsx";
+import { useState } from "react";
+import MinusButton from "@/app/components/recipepage/MinusButton.tsx";
+import PlusButton from "@/app/components/recipepage/PlusButton.tsx";
 
 type IngredientsProps = {
   ingredients: Ingredient[];
@@ -11,7 +16,8 @@ export default function IngredientsSection({ ingredients }: IngredientsProps) {
   //    - Button
   //    - Anzahl Servings
   //    - IngredientList zeigen
-  const servings = 4;
+  const [servings, setServings] = useState(4);
+
   return (
     <>
       <div className={"mb-8 mt-8 flex items-center justify-between"}>
@@ -26,9 +32,12 @@ export default function IngredientsSection({ ingredients }: IngredientsProps) {
             - MinusButton
             - Anzahl Servings
             */}
+          <MinusButton onClick={() => setServings(servings - 1)} />
+          {servings} Servings
+          <PlusButton onClick={() => setServings(servings + 1)} />
         </div>
       </div>
-      <IngredientList ingredients={ingredients} />
+      <IngredientList ingredients={ingredients} servings={servings} />
     </>
   );
 }

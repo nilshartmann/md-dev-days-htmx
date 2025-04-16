@@ -1,8 +1,8 @@
 // initial Demo Konfiguration::::::::::
 
 export const slowDown_IncreaseLikes = 0;
-export const slowDown_GetFeedbacks = 0;
-export const slowDown_GetRecipe = 0;
+export const slowDown_GetFeedbacks = 2400;
+export const slowDown_GetRecipe = 1200;
 export const debounce_search = 200;
 export const slowDown_search = 0;
 

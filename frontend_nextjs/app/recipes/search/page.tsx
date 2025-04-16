@@ -15,6 +15,11 @@ export default function SearchPage() {
 
   const handleSearchChange = (newSearch: string) => {
     setSearch(newSearch);
+    // Suchstring beim Tippen in die URL als Such-Parameter schreiben
+    //  - React rendert dann diese Komponente neu, so dass wir den
+    //    aktuellen Wert dann zur verfügung haben
+    //  - dasselbe gilt, wenn wir direkt diese Seite mit einem Such-Parameter
+    //    in der URL aufrufen
     setSearchTermInParams(newSearch);
   };
 
@@ -32,6 +37,7 @@ export default function SearchPage() {
             onChange={(e) => handleSearchChange(e.target.value)}
           />
           <button
+            // Eingabe zurücksetzen. URL wird auch automatisch angepasst
             onClick={() => handleSearchChange("")}
             className="ms-2 cursor-pointer text-gray-500 underline hover:text-gray-900"
           >
@@ -42,6 +48,7 @@ export default function SearchPage() {
           {search.length < 3 ? (
             <Label>Type three letters to start search</Label>
           ) : (
+            // Suche ausführen, während der Request läuft, LoadingIndicator anzeigen
             <Suspense fallback={<LoadingIndicator />}>
               <RecipeSearch search={searchTerm} />
             </Suspense>
