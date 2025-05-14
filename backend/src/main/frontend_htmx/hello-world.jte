@@ -31,6 +31,9 @@
                          _initial_ angehakt ist?
 
                     --%>
+                    hx-trigger="change"
+                    hx-get="/hello-htmx"
+                   hx-target="#more-info"
             />
             I want to know more!
         </label>
